@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, Moon, Sun, Search, X, BookOpen, Layout, Settings, Bookmark, Info, Clock, Compass, Star } from "lucide-react";
+import { Menu, Moon, Sun, Search, X, BookOpen } from "lucide-react";
 import { useQuranStore } from "@/lib/store";
 import { SearchBar } from "./SearchBar";
 import { UserMenu } from "./auth/UserMenu";
@@ -39,20 +39,6 @@ export function Header() {
             <BookOpen className="w-4 h-4" />
             المساعد الذكي
           </Link>
-          
-          <NavGroup label="المحتوى" items={[
-            { href: "/prophets", label: "قصص الأنبياء" },
-            { href: "/quran-sciences", label: "علوم القرآن" },
-            { href: "/tajweed", label: "أحكام التجويد" },
-            { href: "/hadith-qudsi", label: "الأحاديث القدسية" }
-          ]} />
-          
-          <NavGroup label="إسلاميات" items={[
-            { href: "/adhkar", label: "الأذكار" },
-            { href: "/asma-allah", label: "أسماء الله" },
-            { href: "/prayer-times", label: "المواقيت" },
-            { href: "/qibla", label: "القبلة" }
-          ]} />
         </nav>
 
         <div className="xl:hidden flex-1" />
@@ -105,24 +91,6 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
     <Link href={href} className="px-3 py-2 rounded-lg font-medium text-sm transition-colors hover:bg-gray-100 dark:hover:bg-gray-800" style={{ color: "var(--text-muted)" }}>
       {children}
     </Link>
-  );
-}
-
-function NavGroup({ label, items }: { label: string; items: { href: string; label: string }[] }) {
-  return (
-    <div className="relative group px-3 py-2">
-      <button className="font-medium text-sm transition-colors" style={{ color: "var(--text-muted)" }}>
-        {label}
-      </button>
-      <div className="absolute top-full right-0 mt-1 hidden group-hover:block min-w-[160px] rounded-xl shadow-lg border p-2 z-50" 
-           style={{ background: "var(--bg-elev)", borderColor: "var(--border)" }}>
-        {items.map((item) => (
-          <Link key={item.href} href={item.href} className="block px-4 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-            {item.label}
-          </Link>
-        ))}
-      </div>
-    </div>
   );
 }
 
